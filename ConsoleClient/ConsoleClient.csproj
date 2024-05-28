@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NetApp_Models_Library\NetApp_Models_Library.csproj" />
+    <ProjectReference Include="..\ConsoleServer\ConsoleServer.csproj" />
   </ItemGroup>
 
 </Project>
