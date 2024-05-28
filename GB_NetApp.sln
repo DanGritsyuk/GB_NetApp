@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleServer", "ConsoleServer\ConsoleServer.csproj", "{A08E9B56-4E88-40EE-86B1-4BE7E1777794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleServer", "ConsoleServer\ConsoleServer.csproj", "{A08E9B56-4E88-40EE-86B1-4BE7E1777794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{0C4D3206-5D47-451C-97F0-43A1F09E0AFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{0C4D3206-5D47-451C-97F0-43A1F09E0AFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetApp_ModelsLibrary", "NetApp_ModelsLibrary\NetApp_ModelsLibrary.csproj", "{4DA9D3D2-BD4D-4671-B8AA-39AA7B934646}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0C4D3206-5D47-451C-97F0-43A1F09E0AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C4D3206-5D47-451C-97F0-43A1F09E0AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C4D3206-5D47-451C-97F0-43A1F09E0AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA9D3D2-BD4D-4671-B8AA-39AA7B934646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA9D3D2-BD4D-4671-B8AA-39AA7B934646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA9D3D2-BD4D-4671-B8AA-39AA7B934646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA9D3D2-BD4D-4671-B8AA-39AA7B934646}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
