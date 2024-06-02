@@ -1,10 +1,26 @@
-﻿namespace ConsoleServer
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ConsoleServer
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Server server = new Server();
+
+            Console.WriteLine("Запуск сервера...");
+            Task listenTask = server.ListenAsync();
+
+            //Console.WriteLine("Для остановки сервера нажмите любую клавишу...");
+            //Console.ReadKey();
+            
+            await listenTask;
+
+            server.Disconnect();
+
+            Console.WriteLine("Сервер остановлен.");
         }
     }
 }

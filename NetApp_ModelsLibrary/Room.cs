@@ -8,21 +8,19 @@ namespace NetApp_ModelsLibrary
 {
     public class Room
     {
-        private readonly int _id;
-
         public Room(int id, string roomName)
         {
             RoomName = roomName;
-            _id = id;
+            Id = id;
             SecretKey = Guid.NewGuid();
             Messages = new List<Message>();
             CurrentUsers = new List<User>();
         }
 
-        public int Id { get => _id;  }
+        public int Id { get;  }
         public string RoomName { get; set; }
         public Guid SecretKey { get; set; }
-        public List<Message> Messages { get; set; }
-        public List<User> CurrentUsers { get; set; }
+        public List<Message> Messages { get; private set; }
+        public List<User> CurrentUsers { get; private set; }
     }
 }

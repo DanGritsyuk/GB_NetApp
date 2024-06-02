@@ -28,7 +28,7 @@ namespace NetApp_ModelsLibrary
         /// <param name="other"></param>
         /// <returns></returns>
         public int CompareTo(Message? other) =>
-            other == null ? 1 : other.Time.CompareTo(this.Time);
+            other?.Time.CompareTo(Time) ?? 1;
 
 
     }

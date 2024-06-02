@@ -1,37 +1,64 @@
-﻿using System.Net.Sockets;
-using ConsoleServer;
+﻿using NetApp_ModelsLibrary;
+using System.Net.Sockets;
+using System.Text;
 
 namespace ConsoleClient
 {
-    public class Client
+    class Client
     {
-        protected internal string Id { get; } = Guid.NewGuid().ToString();
-        protected internal StreamWriter Writer { get; }
-        protected internal StreamReader Reader { get; }
+        private TcpClient _client;
+        private StreamReader _reader;
+        private StreamWriter _writer;
+        private ChatUI _chatUI;
 
-        TcpClient client;
-
-        public Client(TcpClient tcpClient)
+        public Client(TcpClient client)
         {
-            client = tcpClient;
-            // получаем NetworkStream для взаимодействия с сервером
-            var stream = client.GetStream();
-            // создаем StreamReader для чтения данных
-            Reader = new StreamReader(stream);
-            // создаем StreamWriter для отправки данных
-            Writer = new StreamWriter(stream);
+            _client = client;
+            NetworkStream stream = _client.GetStream();
+            _reader = new StreamReader(stream, Encoding.UTF8);
+            _writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
+            _chatUI = new ChatUI();
         }
 
         public async Task ProcessAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                //Task? ReceiveMessageTask = null;                
+                var startProcess = true;
+                _chatUI.StartRenderChat();
+
+                while (startProcess)
+                {
+                    string message = _chatUI.RenderMessageInput();
+                    await SendMessageAsync(message);
+
+                    Task ReceiveMessageTask = ReceiveMessageAsync();
+                }
+                //if (ReceiveMessageTask != null)
+                //    await ReceiveMessageTask;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Произошла ошибка: " + ex.Message);
+            }
+            finally
+            {
+
+                _client.Close();
+            }
         }
-        // закрытие подключения
-        protected internal void Close()
+
+        private async Task SendMessageAsync(string? message)
         {
-            Writer.Close();
-            Reader.Close();
-            client.Close();
+            await _writer.WriteLineAsync(message);
+            await _writer.FlushAsync();
+
         }
+
+
+
+        private async Task ReceiveMessageAsync() =>
+            _chatUI.RenderReceiveMessage(await _reader.ReadLineAsync());
     }
 }
